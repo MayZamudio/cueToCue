@@ -6,11 +6,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Ruby (2.6)
+    # - uses: actions/checkout@v1
+    - name: Use Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: '2.6.6'
+        ruby-version: '2.6'
+    - name: Check Ruby version
+      run: |
+        ruby -v
     - name: Build and test with RSpec
       run: |
         gem install bundler

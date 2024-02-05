@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v1
@@ -12,9 +12,9 @@ jobs:
     - name: Install Ruby (2.6)
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.6.10
+        ruby-version: 2.6.x
     - name: Build and test with RSpec
       run: |
-        gem install bundler
+        gem install bundler -v 2.4.22
         bundle install --jobs 4 --retry 3
         bundle exec rspec
